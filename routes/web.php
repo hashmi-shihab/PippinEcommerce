@@ -18,12 +18,46 @@ Route::get('/', function () {
     return view('admin.dashboard');
     // return view('welcome');
 });
-Route::get('/login', function () {
-    return view('login');
-    // return view('welcome');
-});
 
- 
+/*======================route space for hashmi============================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*======================route space for nabib============================*/
 Route::resource('category', CategoryController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
 
 
