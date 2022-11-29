@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Products\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +20,9 @@ Route::get('/', function () {
 });
 
 /*======================route space for hashmi============================*/
-
-
+Route::group(['prefix' => 'Products'], function() {
+    Route::resource('category', CategoryController::class);
+});
 
 
 
@@ -36,7 +37,6 @@ Route::get('/', function () {
 
 
 /*======================route space for nabib============================*/
-Route::resource('category', CategoryController::class);
 
 
 
