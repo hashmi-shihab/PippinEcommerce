@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('admin.dashboard');
     // return view('welcome');
 });
@@ -38,6 +38,26 @@ Route::group(['prefix' => 'Products'], function() {
 
 /*======================route space for nabib============================*/
 
+Route::get('/', function(){
+    // return view('frontend.layouts.app');
+   return view('frontend.category');
+});
+
+
+Route::get('/cart', function(){
+    return view('frontend.cart');
+});
+
+Route::get('/product', function(){
+    return view('frontend.product.allproduct');
+});
+
+Route::get('/productdetails', function(){
+    return view('frontend.product.productdetails');
+});
+Route::get('/checkout', function(){
+    return view('frontend.checkout');
+});
 
 
 
@@ -52,9 +72,10 @@ Route::group(['prefix' => 'Products'], function() {
 
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
