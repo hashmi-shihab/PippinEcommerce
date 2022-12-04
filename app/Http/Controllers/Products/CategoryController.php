@@ -11,6 +11,8 @@ use App\Repositories\Interfaces\categoryRepositoryInterface;
 class CategoryController extends Controller
 {
     private $categoryRepository;
+
+    
     public function __construct(categoryRepositoryInterface $categoryRepository)
     {
         $this->categoryRepository= $categoryRepository;
