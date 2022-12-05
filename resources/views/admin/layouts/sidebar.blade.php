@@ -26,6 +26,19 @@
                            
                         </ul>
                     </li>
+
+                       <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
+                            <span class="nav-label">Product </span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="{{ route('product.index') }}">Product List</a>
+                                <a href="{{ route('product.create') }}">Create Product</a>
+                            </li>
+                           
+                           
+                        </ul>
+                    </li>
                   
                   
                  
