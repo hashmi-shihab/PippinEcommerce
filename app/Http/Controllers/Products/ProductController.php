@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\Products\ProductRequestValidation;
 
@@ -95,9 +96,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $product = $this->productRepository->show($product->id);
+          $this->data = $this->categoryRepository->getCategoryDropdown();
+          $categories= $this->data;
+        return view('admin.product.edit',compact('product','categories'));
     }
 
     /**
