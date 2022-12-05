@@ -44,9 +44,10 @@ class ProductController extends Controller
        
           $this->data = $this->categoryRepository->getCategoryDropdown();
           $categories= $this->data;
-        //dd($categories);
+      
        
         return view('admin.product.create',compact('categories'));
+        
     }
 
     /**
@@ -55,9 +56,23 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( ProductRequestValidation $request)
+    public function store(ProductRequestValidation $request)
     {
-          $validated = $request->validated();
+     
+
+            $input = $request->all();
+
+            if ($image = $request->file('image')) {
+                $destinationPath = 'image/products';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = "$profileImage";
+            }
+
+             $product=  $this->productRepository->create($input); 
+            return redirect()->back()->with('success', 'Product  created successfully.');
+           
+    
     }
 
     /**

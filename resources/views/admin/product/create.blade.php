@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <div class="ibox-body">
-                                <form action="{{ route('product.store')}}" method="POST" enctype="multipart/form-data">
+                                <form action={{ route('products2.store')}} method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('POST')
                                     <div class="form-group row">
@@ -68,6 +68,17 @@
                                         @endif
                                     </div>
 
+
+                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Code</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" name="code" type="text">
+                                        </div>
+                                        @if ($errors->has('code'))
+                                            <span class="text-danger error-text mt-1">{{ $errors->first('code') }}</span>
+                                        @endif
+                                    </div>
+
                                 
 
                                      <div class="form-group row">
@@ -107,6 +118,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-10 ml-sm-auto">
+                                           
                                            <input type="submit" class="btn btn-success">
                                         </div>
                                     </div>
@@ -116,5 +128,8 @@
                     </div>
                 </div>
             </div>
+
+
+             
     
 @endsection

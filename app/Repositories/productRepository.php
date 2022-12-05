@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repositories;
-use App\Models\Category;
+use App\Models\Product;
 use App\Repositories\Interfaces\productRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,10 +10,10 @@ class productRepository implements productRepositoryInterface{
     public function all()
     {
         if (Auth::id()==1){
-            return Category::latest()->simplePaginate(5);
+            return Product::latest()->simplePaginate(5);
         }
         else{
-            return Category::where('status',1)->latest()->simplePaginate(5);
+            return Product::where('status',1)->latest()->simplePaginate(5);
         }
     }
 
@@ -24,7 +24,7 @@ class productRepository implements productRepositoryInterface{
 
     public function show($id)
     {
-        return Category::find($id);
+        return Product::find($id);
     }
 
     public function update($id, array $attributes)

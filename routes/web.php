@@ -50,9 +50,9 @@ Route::get('/cart', function(){
     return view('frontend.cart');
 });
 
-Route::get('/product', function(){
-    return view('frontend.product.allproduct');
-});
+// Route::get('/product', function(){
+//     return view('frontend.product.allproduct');
+// });
 
 Route::get('/productdetails', function(){
     return view('frontend.product.productdetails');
@@ -63,8 +63,10 @@ Route::get('/checkout', function(){
 
 
 Route::group(['prefix' => 'Products'], function() {
-    Route::resource('product', ProductController::class);
+    Route::resource('/products2', ProductController::class);
 });
+
+
 
 
 
@@ -83,7 +85,7 @@ Route::group(['prefix' => 'Products'], function() {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 

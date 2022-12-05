@@ -26,17 +26,12 @@ class ProductRequestValidation extends FormRequest
     public function rules()
     {
         return [
-            'cat_id' => [
-                'required',
-                'integer'
-            ],
+           
               'name' => "required|max:25|regex:/^[0-9A-Za-z.\s,'-]*$/",
               'brand' => "required|max:25|regex:/^[0-9A-Za-z.\s,'-]*$/",
               'description' => "required|regex:/^[0-9A-Za-z.\s,'-]*$/",
-
               'qty' =>'required|numeric',
               'code' => "required|max:10|regex:/^[0-9A-Za-z.\s,'-]*$/",
-
               'price' =>'required|numeric',
               'image'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
                             
