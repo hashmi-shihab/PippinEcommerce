@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Products\CategoryController;
+use App\Http\Controllers\Products\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +38,7 @@ Route::group(['prefix' => 'Products'], function() {
 
 
 /*======================route space for nabib============================*/
-Route::resource('category', CategoryController::class);
+// Route::resource('category', CategoryController::class);
 
 Route::get('/', function(){
     // return view('frontend.layouts.app');
@@ -59,6 +60,13 @@ Route::get('/productdetails', function(){
 Route::get('/checkout', function(){
     return view('frontend.checkout');
 });
+
+
+Route::group(['prefix' => 'Products'], function() {
+    Route::resource('product', ProductController::class);
+});
+
+
 
 
 

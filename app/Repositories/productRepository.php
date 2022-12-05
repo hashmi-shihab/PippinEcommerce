@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 use App\Models\Category;
-use App\Repositories\Interfaces\categoryRepositoryInterface;
+use App\Repositories\Interfaces\productRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
-class categoryRepository implements categoryRepositoryInterface{
+class productRepository implements productRepositoryInterface{
 
     public function all()
     {
@@ -17,19 +17,9 @@ class categoryRepository implements categoryRepositoryInterface{
         }
     }
 
-    public function getCategoryDropdown()
-	{
-		
-        return Category::latest()->where('status',1)->get();
-
-		
-    }
-
-		
-
     public function create(array $attributes)
     {
-        Category::create($attributes);
+        Product::create($attributes);
     }
 
     public function show($id)
