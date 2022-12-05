@@ -30,9 +30,12 @@ class CategoryController extends Controller
     }
 
     public function store(CategoryRequestValidation $request)
-    {
+
+    {   
+        // dd($request->all());
         $this->categoryRepository->create($request->all());
         return redirect()->back()->with('success', 'Category  created successfully.');
+        
     }
 
     public function show(Category $category)
