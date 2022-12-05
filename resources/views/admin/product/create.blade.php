@@ -24,13 +24,13 @@
                                 </div>
                             </div>
                             <div class="ibox-body">
-                                <form action={{ route('products2.store')}} method="POST" enctype="multipart/form-data">
+                                <form action={{ route('product.store')}} method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('POST')
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Name</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="name" type="text">
+                                            <input class="form-control" name="name" type="text" value="{{old('name')}}">
                                         </div>
                                         @if ($errors->has('name'))
                                             <span class="text-danger error-text mt-1">{{ $errors->first('name') }}</span>
@@ -41,7 +41,7 @@
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Brand</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="brand" type="text">
+                                            <input class="form-control" name="brand" type="text" value="{{old('brand')}}">
                                         </div>
                                         @if ($errors->has('brand'))
                                             <span class="text-danger error-text mt-1">{{ $errors->first('brand') }}</span>
@@ -51,7 +51,7 @@
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Price</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="price" type="text">
+                                            <input class="form-control" name="price" type="text" value="{{old('price')}}">
                                         </div>
                                         @if ($errors->has('price'))
                                             <span class="text-danger error-text mt-1">{{ $errors->first('price') }}</span>
@@ -61,7 +61,7 @@
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Quantity</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="qty" type="text">
+                                            <input class="form-control" name="qty" type="text" value="{{old('qty')}}" >
                                         </div>
                                         @if ($errors->has('qty'))
                                             <span class="text-danger error-text mt-1">{{ $errors->first('qty') }}</span>
@@ -72,7 +72,7 @@
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Code</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="code" type="text">
+                                            <input class="form-control" name="code" type="text" value="{{old('code')}}" >
                                         </div>
                                         @if ($errors->has('code'))
                                             <span class="text-danger error-text mt-1">{{ $errors->first('code') }}</span>
@@ -86,7 +86,7 @@
                                         <div class="col-sm-10">
                                             <select class="form-control" name="cat_id">
                                                 @foreach ($categories as $key=>$category)
-                                                   <option value="{{$category->id}}">{{ $category->name }}</option>
+                                                   <option value="{{$category->id}}" {{ old('cat_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -108,7 +108,7 @@
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-10">
-                                              <textarea class="form-control" name="description" rows="4" cols="50"></textarea>
+                                              <textarea class="form-control" name="description" rows="4" cols="50" value="{{old('description')}}"></textarea>
                                         </div>
                                         @if ($errors->has('description'))
                                             <span class="text-danger error-text mt-1">{{ $errors->first('description') }}</span>

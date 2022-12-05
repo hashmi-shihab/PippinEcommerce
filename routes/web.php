@@ -63,7 +63,7 @@ Route::get('/checkout', function(){
 
 
 Route::group(['prefix' => 'Products'], function() {
-    Route::resource('/products2', ProductController::class);
+    Route::resource('/product', ProductController::class);
 });
 
 
