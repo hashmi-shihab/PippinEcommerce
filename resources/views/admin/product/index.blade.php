@@ -15,7 +15,7 @@
                 @endif
             </span>
 
-            <table class="table table-bordered table-condensed table-hover mt-5">
+            <table class="table table-bordered table-condensed table-hover mt-5" id="data-table">
         <thead>
             <tr>
                 <td>No</td>
