@@ -72,6 +72,10 @@
         $(function() {
             $('#data-table').DataTable({
                 pageLength: 10,
+                 "columnDefs": [
+                        { "orderable": false, "targets": 9 }
+                       
+                     ]
                 //"ajax": './assets/demo/data/table_data.json',
                 /*"columns": [
                     { "data": "name" },
