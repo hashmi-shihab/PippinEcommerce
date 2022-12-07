@@ -21,11 +21,12 @@ Route::get('/', function () {
 });
 
 /*======================route space for hashmi============================*/
-// Route::group(['prefix' => 'Products'], function() {
-    
-// });
+Route::group(['prefix' => 'admin'], function() {
+    Route::resource('category', CategoryController::class, ['names' => 'category']);
+    Route::resource('product', ProductController::class, ['names' => 'product']);
+});
 
-Route::resource('category', CategoryController::class, ['names' => 'category']);
+
 
 
 
@@ -64,9 +65,7 @@ Route::get('/checkout', function(){
 });
 
 
-Route::group(['prefix' => 'Products'], function() {
-    Route::resource('/product', ProductController::class, ['names' => 'product']);
-});
+
 
 
 
