@@ -1,10 +1,10 @@
     <header class="header">
             <div class="page-brand">
                 <a class="link" href="index.html">
-                    <span class="brand">Admin
-                        <span class="brand-tip">CAST</span>
+                    <span class="brand">PIPPIN
+                        <span class="brand-tip">ECOMMRCE</span>
                     </span>
-                    <span class="brand-mini">AC</span>
+                    <span class="brand-mini">EC</span>
                 </a>
             </div>
             <div class="flexbox flex-1">
@@ -25,7 +25,7 @@
                 <!-- END TOP-LEFT TOOLBAR-->
                 <!-- START TOP-RIGHT TOOLBAR-->
                 <ul class="nav navbar-toolbar">
-                    <li class="dropdown dropdown-inbox">
+                    {{-- <li class="dropdown dropdown-inbox">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i>
                             <span class="badge badge-primary envelope-badge">9</span>
                         </a>
@@ -136,7 +136,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="dropdown dropdown-user">
                         <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
                             <img src="{{ asset('./assets/img/admin-avatar.png')}}" />
