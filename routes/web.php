@@ -21,9 +21,12 @@ Route::get('/', function () {
 });
 
 /*======================route space for hashmi============================*/
-Route::group(['prefix' => 'Products'], function() {
-    Route::resource('category', CategoryController::class);
+Route::group(['prefix' => 'admin'], function() {
+    Route::resource('category', CategoryController::class, ['names' => 'category']);
+    Route::resource('product', ProductController::class, ['names' => 'product']);
 });
+
+
 
 
 
@@ -62,9 +65,7 @@ Route::get('/checkout', function(){
 });
 
 
-Route::group(['prefix' => 'Products'], function() {
-    Route::resource('/product', ProductController::class);
-});
+
 
 
 
@@ -85,7 +86,7 @@ Route::group(['prefix' => 'Products'], function() {
 
 Auth::routes();
 
- Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 
 
