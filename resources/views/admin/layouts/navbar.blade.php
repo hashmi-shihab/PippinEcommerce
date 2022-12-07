@@ -139,7 +139,7 @@
                     </li> --}}
                     <li class="dropdown dropdown-user">
                         <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
-                            <img src="{{ asset('./assets/img/admin-avatar.png')}}" />
+                           <img src="/users/image/{{Auth::user()->image}}" width="45px"  style="border-radius:50%"/>
                             <span></span>{{ Auth::user()->name }}<i class="fa fa-angle-down m-l-5"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
