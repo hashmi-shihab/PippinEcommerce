@@ -2,13 +2,13 @@
 
 @section('content')
 
-    <div class="page-heading">
-        <h1 class="page-title">Product</h1>
+    <div class="page-heading  ml-5 mt-5">
+        <h1 class="page-title ml-2">Product</h1>
     </div>
 
     <div class="page-content fade-in-up">
-                <div class="row">
-                    <div class="col-md-10">
+                <div class="row ml-5">
+                    <div class="col-md-8">
                         <div class="ibox">
                             <div class="ibox-head">
                                 <div class="ibox-title">Create Product</div>
@@ -29,7 +29,7 @@
                                     @method('POST')
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Name</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <input class="form-control" name="name" type="text" value="{{old('name')}}">
                                         </div>
                                         @if ($errors->has('name'))
@@ -40,7 +40,7 @@
 
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Brand</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <input class="form-control" name="brand" type="text" value="{{old('brand')}}">
                                         </div>
                                         @if ($errors->has('brand'))
@@ -50,7 +50,7 @@
 
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Price</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <input class="form-control" name="price" type="text" value="{{old('price')}}">
                                         </div>
                                         @if ($errors->has('price'))
@@ -60,7 +60,7 @@
 
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Quantity</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <input class="form-control" name="qty" type="text" value="{{old('qty')}}" >
                                         </div>
                                         @if ($errors->has('qty'))
@@ -71,7 +71,7 @@
 
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Code</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <input class="form-control" name="code" type="text" value="{{old('code')}}" >
                                         </div>
                                         @if ($errors->has('code'))
@@ -83,7 +83,7 @@
 
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Category</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <select class="form-control" name="cat_id">
                                                 @foreach ($categories as $key=>$category)
                                                    <option value="{{$category->id}}" {{ old('cat_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -97,7 +97,7 @@
 
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Image</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <input class="form-control" name="image" type="file" >
                                         </div>
                                         @if ($errors->has('image'))
@@ -107,7 +107,7 @@
                                     
                                      <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Description</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                               <textarea class="form-control" name="description" rows="4" cols="50" value="{{old('description')}}"></textarea>
                                         </div>
                                         @if ($errors->has('description'))
@@ -117,7 +117,7 @@
 
 
                                     <div class="form-group row">
-                                        <div class="col-sm-10 ml-sm-auto">
+                                        <div class="col-sm-8 ml-sm-auto">
                                            
                                            <input type="submit" class="btn btn-success">
                                         </div>

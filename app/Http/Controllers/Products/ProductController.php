@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\Products\ProductRequestValidation;
+use App\Http\Requests\Products\ProductUpdateRequestValidation;
 
 use App\Repositories\Interfaces\categoryRepositoryInterface;
 use App\Repositories\Interfaces\productRepositoryInterface;
@@ -85,9 +86,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+         $product = $this->productRepository->show($product);
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -111,9 +113,30 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequestValidation $request, Product $product)
     {
-        //
+        // dd($request->all());
+
+         $input = $request->all();
+
+         if ($image = $request->file('image')) {
+              $destinationPath = 'image/products';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = "$profileImage";
+             
+         if (file_exists(public_path('image/products/'.$product->image))) {
+                unlink(public_path('image/products/'.$product->image)); 
+            }
+
+        }else{  
+            unset($input['image']);
+        }
+          
+            
+
+         $this->productRepository->update($product->id,$input);
+        return redirect()->back()->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -122,8 +145,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $this->productRepository->delete($product->id);
+        return redirect()->back()->with('success', ' Product  deleted successfully.');
     }
 }
