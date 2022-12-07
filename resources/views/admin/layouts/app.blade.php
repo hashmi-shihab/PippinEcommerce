@@ -70,20 +70,24 @@
 
       <script type="text/javascript">
         $(function() {
-            $('#data-table').DataTable({
+            $('#product-data-table').DataTable({
                 pageLength: 10,
+                 scrollX: true,
                  "columnDefs": [
-                        { "orderable": false, "targets": 9 }
+                        // { "orderable": false, "targets": 9 }
                        
                      ]
-                //"ajax": './assets/demo/data/table_data.json',
-                /*"columns": [
-                    { "data": "name" },
-                    { "data": "office" },
-                    { "data": "extn" },
-                    { "data": "start_date" },
-                    { "data": "salary" }
-                ]*/
+
+            });
+        })
+        $(function() {
+            $('#category-data-table').DataTable({
+                pageLength: 10,
+                 "columnDefs": [
+                        { "orderable": false, "targets": 2 }
+                       
+                     ]
+
             });
         })
     </script>

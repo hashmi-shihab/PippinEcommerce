@@ -22,7 +22,7 @@
                             @endif
                         </span>
 
-                        <table class="table table-striped table-bordered table-hover" id="data-table" cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered table-hover display responsive nowrap" id="product-data-table" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <td>No</td>
@@ -35,6 +35,8 @@
                                     <td>Description</td>
                                     <td>Image</td>
                                     <th>Actions</th>
+                                 
+                                  
                                 </tr>
 
                             </thead>
@@ -52,6 +54,7 @@
                                             <td>{{$product->qty}}</td>
                                             <td>{{$product->code}}</td>
                                             <td>{{$product->description}}</td>
+                                           
                                             <td>
                                                 <img src="{{url('image/products/',$product->image)}}" alt="Product Image" srcset="" width="80">
                                             </td>
