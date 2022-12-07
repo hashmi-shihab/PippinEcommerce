@@ -24,9 +24,9 @@
                                 </div>
                             </div>
                             <div class="ibox-body">
-                                <form action={{ route('product.store')}} method="POST" enctype="multipart/form-data">
+                                <form  action="{{ route('product.update',$product->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('POST')
+                                    @method('PUT')
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Name</label>
                                         <div class="col-sm-10">
@@ -123,10 +123,9 @@
                                     </div>
 
 
-                                    <div class="form-group row">
+                                 <div class="form-group row">
                                         <div class="col-sm-10 ml-sm-auto">
-                                           
-                                           <input type="submit" class="btn btn-success">
+                                            <button class="btn btn-info" type="submit">Update</button>
                                         </div>
                                     </div>
                                 </form>

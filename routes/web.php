@@ -85,7 +85,7 @@ Route::group(['prefix' => 'Products'], function() {
 
 Auth::routes();
 
- Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('');
+ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('');
 
 
 
