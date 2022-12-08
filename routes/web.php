@@ -66,27 +66,11 @@ Route::get('/checkout', function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('profile', [App\Http\Controllers\HomeController::class, 'show'])->name('profile');
+Route::put('profile/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('profile.update');
 
 
 
