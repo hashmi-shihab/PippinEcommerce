@@ -6,9 +6,18 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Interfaces\orderRepositoryInterface;
 
 class OrderController extends Controller
 {
+
+     private $orderRepository;
+
+    
+    public function __construct(orderRepositoryInterface $orderRepository)
+    {
+        $this->orderRepository= $orderRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +25,8 @@ class OrderController extends Controller
      */
     public function index()
     {  
-         $orders= Order::where('user_id',Auth::user()->id)->get();
-       
-        //  dd($orders);
+        //  $orders= Order::where('user_id',Auth::user()->id)->get();
+        $orders = $this->orderRepository->all();
         return view('admin.order.index',compact('orders'));
     }
 
@@ -49,11 +57,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {   
-          $order= Order::where('user_id',Auth::user()->id)->where('id',$id)->first();
 
-        //   dd($order);
+        $order = $this->orderRepository->show($order->id);
 
           if ($order) {
             return view('admin.order.view',compact('order'));
