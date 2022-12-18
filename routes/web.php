@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\Products\CategoryController;
-use App\Http\Controllers\Products\ProductController;
-use App\Http\Controllers\Products\OrderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Products\RoleController;
+use App\Http\Controllers\Products\UserController;
+use App\Http\Controllers\Products\OrderController;
+use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Products\CategoryController;
+use App\Http\Controllers\Products\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +29,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::resource('category', CategoryController::class, ['names' => 'category']);
     Route::resource('product', ProductController::class, ['names' => 'product']);
     Route::resource('order', OrderController::class, ['names' => 'order']);
+    Route::resource('user', UserController::class, ['names' => 'user']);
+    Route::resource('role', RoleController::class, ['names' => 'role']);
+    Route::resource('permission', PermissionController::class, ['names' => 'permission']);
 });
 
 

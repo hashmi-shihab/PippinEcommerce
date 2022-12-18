@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
+       Schema::create('permissions', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('image')->nullable();
-            $table->boolean('status');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('for')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('permission_role', function (Blueprint $table) {
+            $table->integer('role_id');
+            $table->integer('permission_id');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('permissions');
     }
 };

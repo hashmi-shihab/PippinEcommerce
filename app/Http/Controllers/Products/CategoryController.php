@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Products;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Products\CategoryRequestValidation;
 use App\Repositories\Interfaces\categoryRepositoryInterface;
 
@@ -20,12 +21,14 @@ class CategoryController extends Controller
 
     public function index()
     {
+        // if (Auth::user()->can('categoryList')) {
         $categories = $this->categoryRepository->all();
         return view('admin.category.index',compact('categories'));
+        // }
     }
 
     public function create()
-    {
+    {   
         return view('admin.category.create');
     }
 
