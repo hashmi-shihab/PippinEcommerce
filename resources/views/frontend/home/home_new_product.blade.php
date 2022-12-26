@@ -16,11 +16,11 @@
                             <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">All</button>
                         </li>
 
-                          @foreach($categories as $category)
-    <li class="nav-item" role="presentation">
-        <a class="nav-link" id="nav-tab-two" data-bs-toggle="tab" href="#category{{ $category->id }}"  type="button" role="tab" aria-controls="tab-two" aria-selected="false">{{ $category->name }}</a>
-    </li>
-    @endforeach
+                        @foreach($categories as $category)
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="nav-tab-two" data-bs-toggle="tab" href="#category{{ $category->id }}"  type="button" role="tab" aria-controls="tab-two" aria-selected="false">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
                         
                        
                     </ul>
@@ -36,7 +36,7 @@
                                 <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="{{ url('product/details/'.$product->id.'/'.$product->slug) }}">
                                                 <img class="default-img"  src="{{url('image/products/',$product->image)}}"  alt="" />
                                                  
                                             </a>
@@ -46,15 +46,31 @@
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                         </div>
-                                        {{-- <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div> --}}
+
+
+                                        @php
+                                            $amount = $product->selling_price - $product->discount_price;
+                                            $discount = ($amount/$product->selling_price) * 100;
+                                        @endphp
+
+                                        
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+
+                                            @if($product->discount_price == NULL)
+                                            <span class="new">New</span>
+                                            @else
+                                            <span class="hot"> {{ round($discount) }} %</span>
+                                            @endif
+
+                                            
+                                        </div>
+
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
                                             <a href="shop-grid-right.html">{{$product['category'] ['name']}}</a>
                                         </div>
-                                        <h2><a href="shop-product-right.html">{{$product->name}}</a></h2>
+                                        <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->slug) }}">{{$product->name}}</a></h2>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
@@ -65,14 +81,19 @@
                                             <span class="font-small text-muted">By <a href="vendor-details-1.html">NestFood</a></span>
                                         </div> --}}
                                         <div class="product-card-bottom">
-                                            <div class="product-price">
-                                                <span>{{$product->price}}</span>
+                                           @if($product->discount_price == NULL)
+                                                <div class="product-price">
+                                                    <span>${{ $product->selling_price }}</span>
                                                 
-                                            </div>
-                                            {{-- <div class="product-price">
-                                                <span>$28.85</span>
-                                                <span class="old-price">$32.8</span>
-                                            </div> --}}
+                                                </div>
+
+                                                @else
+                                                <div class="product-price">
+                                                    <span>${{ $product->discount_price }}</span>
+                                                    <span class="old-price">${{ $product->selling_price }}</span>
+                                                </div>
+                                            @endif
+
                                             <div class="add-cart">
                                                 <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                             </div>
@@ -88,7 +109,11 @@
                         </div>
                         <!--End product-grid-4-->
                     </div>
-                    <!--En tab one-->
+                    <!--En All Product one-->
+
+
+
+
                     @foreach ($categories as $category)
                          <div class="tab-pane fade" id="category{{ $category->id }}" role="tabpanel" aria-labelledby="tab-two">
                         <div class="row product-grid-4">
@@ -103,7 +128,7 @@ $catwiseProduct = App\Models\Product::where('cat_id',$category->id)->orderBy('id
                                 <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="{{ url('product/details/'.$product->id.'/'.$product->slug) }}">
                                                 <img class="default-img"  src="{{url('image/products/',$product->image)}}"  alt="" />
                                                  
                                             </a>
@@ -113,15 +138,24 @@ $catwiseProduct = App\Models\Product::where('cat_id',$category->id)->orderBy('id
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                         </div>
-                                        {{-- <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div> --}}
+                                        
+    @php
+    $amount = $product->selling_price - $product->discount_price;
+    $discount = ($amount/$product->selling_price) * 100;
+    @endphp
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            @if($product->discount_price == NULL)
+                                                <span class="new">New</span>
+                                            @else
+                                                <span class="hot"> {{ round($discount) }} %</span>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.html">{{$product['category'] ['name']}}</a>
+                                            <a href="shop-grid-right.html">{{$product['category'] ['category_name']}}</a>
                                         </div>
-                                        <h2><a href="shop-product-right.html">{{$product->name}}</a></h2>
+                                        <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->slug) }}">{{$product->name}}</a></h2>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
@@ -132,14 +166,20 @@ $catwiseProduct = App\Models\Product::where('cat_id',$category->id)->orderBy('id
                                             <span class="font-small text-muted">By <a href="vendor-details-1.html">NestFood</a></span>
                                         </div> --}}
                                         <div class="product-card-bottom">
+                                            
+                                            @if($product->discount_price == NULL)
                                             <div class="product-price">
-                                                <span>{{$product->price}}</span>
-                                                
+                                                <span>${{ $product->selling_price }}</span>
+                                            
                                             </div>
-                                            {{-- <div class="product-price">
-                                                <span>$28.85</span>
-                                                <span class="old-price">$32.8</span>
-                                            </div> --}}
+
+                                            @else
+                                            <div class="product-price">
+                                                <span>${{ $product->discount_price }}</span>
+                                                <span class="old-price">${{ $product->selling_price }}</span>
+                                            </div>
+                                            @endif
+
                                             <div class="add-cart">
                                                 <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                             </div>

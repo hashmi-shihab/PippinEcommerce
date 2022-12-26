@@ -8,6 +8,8 @@ use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Products\CategoryController;
 use App\Http\Controllers\Products\PermissionController;
 
+use App\Http\Controllers\Frontend\IndexController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +21,12 @@ use App\Http\Controllers\Products\PermissionController;
 |
 */
 
-Route::get('/', function () {
-   return view('frontend.index');
-    // return view('welcome');
-});
+// Route::get('/', function () {
+//    return view('frontend.index');
+//     // return view('welcome');
+// });
+
+Route::get('/', [IndexController::class, 'Index']);
 
 /*======================route space for hashmi============================*/
 Route::group(['prefix' => 'admin'], function() {
@@ -71,6 +75,14 @@ Route::group(['prefix' => 'admin'], function() {
 // Route::get('/checkout', function(){
 //     return view('frontend.checkout');
 // });
+
+// Route for frontend 
+
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+Route::get('/product/category/{id}/{slug}', [IndexController::class, 'CatWiseProduct']);
+
+
+
 
 
 

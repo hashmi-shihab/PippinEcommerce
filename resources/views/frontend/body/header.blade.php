@@ -279,9 +279,9 @@
 
                                    @foreach ($categories  as $category)
                                         <li>
-                                        <a href="#">{{$category->name}} 
-                                            {{-- <i class="fi-rs-angle-down"></i> --}}
-                                        </a>
+                                         <a href="{{ url('product/category/'.$category->id.'/'.$category->slug) }}">{{ $category->name }}
+                                             {{-- <i class="fi-rs-angle-down"></i> --}}
+                                            </a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="vendors-grid.html">Vendors Grid</a></li>
                                             
